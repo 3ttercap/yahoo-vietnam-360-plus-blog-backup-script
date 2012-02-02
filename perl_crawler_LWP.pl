@@ -31,14 +31,17 @@ use Switch;
 ##########################Networking section########################
 my $UA = LWP::UserAgent->new;
 my $cookies = HTTP::Cookies->new();
-# capture the your cookies for yahoo domain after login and put it into <cookie_here> as a parameter for set_cookie().
+# capturing your cookies for yahoo domain after login and put it into <cookie_here> as a parameter for set_cookie(), which only requires if the blog visibility set to PRIVATE. My former blog on 360 plus is set private so I need to implement this function, you may try any value(?) or some yahoo cookies values when connect to a public blog.
 $cookies->set_cookie(0,'Y', '<cookie_here>','/','yahoo.com',80,0,0,86400,0);
 $UA->cookie_jar($cookies);
 my $id = 1;
-#print "Get here - Start Lopping\n";
-
-for($id = 1;$id <2;$id++) {
-	my $url = 'http://vn.360plus.yahoo.com/sugar_claire89/article?mid='.$id;
+## Start Lopping;
+## assign your yahoo id to the var yid.
+my $yid= '';
+## adjust the maximum id number of the article, this could be done by looking at your address bar when you are reading the lastest article
+#my $max_id = ;
+for($id = 1;$id <$max_id;$id++) {
+	my $url = 'http://vn.360plus.yahoo.com/'.$yid.'/article?mid='.$id;
 	my $req = HTTP::Request->new(GET => $url);
 	my $res = $UA->request($req);
 
@@ -79,9 +82,6 @@ if($passed) {
 	}
 	print "</comments>\n";
 	print "</blog id=\"$id\">";
-
-#print "<id=$id>\n<date>$date</date>\n<title>$title</title>\n<content>$entry</content>\n<tag>$tag</tag>\n<comment>@comments</comment>\n</id=$id>"
-#	DAO($id,$date,$title,$entry,$tag,$comments);
 	}
 }
 
