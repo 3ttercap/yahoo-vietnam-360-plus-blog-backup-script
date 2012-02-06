@@ -1,4 +1,4 @@
-#
+#!/usr/bin/perl
 # Copyright (C) 2012 Le Vu Hiep
 #
 # This program is free software; you can redistribute it and/or modify
@@ -15,8 +15,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA.
 
-
-#!/usr/bin/perl
 use strict;
 use warnings;
 use HTML::Entities;
